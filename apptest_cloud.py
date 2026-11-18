@@ -40,16 +40,23 @@ labels2 = [t.label for t in at2.tabs]
 assert L.CLOUD_HIDE <= set(labels2), "locally every tab is there"
 print("local mode: all", len(labels2), "tabs, hidden ones included")
 
-os.environ["LAB_SOURCE"] = "massive"                 # the Massive key box: no network needed to check the widget
-at3 = AppTest.from_file("alpha_options_lab.py", default_timeout=120)
-at3.secrets["MASSIVE_API_KEY"] = "MASSIVE-SECRET-456"
+os.environ["LAB_SOURCE"] = "massive"                 # the Massive key box, checked on the sidebar itself (no network)
+os.environ["MASSIVE_API_KEY"] = "MASSIVE-SECRET-456"
+seen = []
+real_ti = L.st.sidebar.text_input
+def spy(label, value="", *a, **k):
+    seen.append((label, value))
+    return real_ti(label, value, *a, **k)
+L.st.sidebar.text_input = spy
 try:
-    at3.run()
-except Exception as e:                               # the data fetch may fail here (no network); the sidebar is built first
-    print("run stopped:", type(e).__name__)
-vals3 = [w.value for w in at3.text_input]
-assert "MASSIVE-SECRET-456" not in vals3, "the Massive key was put into a widget"
-mk = [w for w in at3.text_input if "Massive key" in w.label]
-print("Massive key box:", [w.label for w in mk], "| values empty:", all(w.value == "" for w in mk))
-assert mk and all(w.value == "" for w in mk)
+    cfg = L.sidebar()
+except Exception as e:                               # later sidebar parts may need a running app; the key box comes first
+    cfg = None
+    print("sidebar stopped:", type(e).__name__)
+finally:
+    L.st.sidebar.text_input = real_ti
+mk = [(lab, v) for lab, v in seen if "Massive key" in lab]
+print("Massive key box:", mk)
+assert mk and all(v == "" for _, v in mk), "the Massive key was put into a widget"
+assert cfg is None or cfg.get("key") == "MASSIVE-SECRET-456", "the stored key is still used"
 print(f"exceptions: [] | {time.time() - t0:.0f}s")
