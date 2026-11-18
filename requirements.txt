@@ -1,0 +1,12 @@
+# Streamlit Community Cloud (the hosted dashboard). Same pins as requirements-lab.txt, without the optional heavy
+# packages: torch (the Breakout model's and the Learned ranker's networks) and lightgbm. Those two tabs fall back to
+# scikit-learn models. Locally, install requirements-lab.txt instead.
+pandas==3.0.5
+numpy==2.5.3
+streamlit==1.66.1
+altair==6.3.0
+requests==2.34.2
+scipy==1.18.1
+scikit-learn==1.9.1
+pyarrow==26.0.0
+tzdata

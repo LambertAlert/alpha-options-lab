@@ -9948,6 +9948,10 @@ def render_imk(cfg, imk: Optional[Dict[str, Any]], err: Optional[str]) -> None:
                 tooltip=[alt.Tooltip("date:T"), "book", alt.Tooltip("v:Q", format=".2f")]).properties(title="Mechanical equity positioning, last two years"), 230))
     note("Credit (Market > Climate, credit canary), the correlation regime (Market > CMT) and carry (Market > Narratives) "
          "are the other places risk shows up first; they aren't repeated here.")
+    if lab_cloud():
+        with st.expander("How the intermarket tab works"):
+            st.markdown(IMK_GUIDE)
+        return
     sec("4 · Does it matter for your setups?")
     res = ss.get("lg_res")
     run = (res or {}).get("runs", {}).get("list") if res else None
@@ -12045,6 +12049,24 @@ def _secret(name: str) -> Optional[str]:
     return v if v and v.strip() not in ("", "***", "YOUR_API_KEY") else None
 
 
+# Cloud mode (LAB_CLOUD = "1" in Streamlit Cloud's Secrets, or the environment): the hosted dashboard. Its disk is
+# wiped on every restart, and building ledgers takes minutes and a lot of memory, so the tabs that build or need the
+# ledgers, and the trade log, are left out. Everything else runs as it does locally.
+CLOUD_HIDE = {"Setup ledger", "Expectancy & Kelly", "Simulation", "Trade ranker", "Process plinko", "Scorecard",
+              "Alphas by trade", "Bull spreads", "Bear spreads"}
+
+
+def lab_cloud() -> bool:
+    v = _secret("LAB_CLOUD")
+    return bool(v) and str(v).strip().lower() not in ("0", "false", "no", "off")
+
+
+def lab_tabs(names: Sequence[str]) -> Dict[str, Any]:
+    """st.tabs for the names this deployment shows, keyed by name (cloud mode leaves CLOUD_HIDE out)."""
+    keep = [n for n in names if not (lab_cloud() and n in CLOUD_HIDE)]
+    return dict(zip(keep, st.tabs(keep)))
+
+
 def sidebar() -> Dict[str, Any]:
     sb = st.sidebar
     md(f"<div class='mast-title' style='font-size:.9rem'>{_esc(APP_TITLE.upper())}</div>", sb)
@@ -12056,7 +12078,11 @@ def sidebar() -> Dict[str, Any]:
                                    "demo": "Demo (synthetic)"}.get, horizontal=False)
     key = None
     if source == "massive":
-        key = sb.text_input("Massive API key", value=env_key or "", type="password") or env_key
+        if env_key:                                  # never put a stored key into a widget: its value goes to the browser
+            sb.caption("Massive key: from Secrets / the environment.")
+            key = sb.text_input("Use a different Massive key (optional)", value="", type="password") or env_key
+        else:
+            key = sb.text_input("Massive API key", value="", type="password") or None
         if not key:
             sb.warning("Add a key, or switch to Yahoo / Demo.")
     strip = True
@@ -12112,8 +12138,9 @@ def sidebar() -> Dict[str, Any]:
     refuse = {t.strip().upper() for t in refuse_txt.replace(";", ",").split(",") if t.strip()}
     kelly = kelly_rules_sidebar()
     with sb.expander("Optional outside data (free)"):
-        fred_key = st.text_input("FRED API key", value=_secret("FRED_API_KEY") or "", type="password",
-                                 help="Free at fred.stlouisfed.org. Enables Market > Macro.") or None
+        fred_env = _secret("FRED_API_KEY")
+        fred_key = st.text_input("FRED API key" + (" (using the stored one; type to override)" if fred_env else ""), value="",
+                                 type="password", help="Free at fred.stlouisfed.org. Enables Market > Macro.") or fred_env or None
         sec_ua = st.text_input("SEC contact (name and email)", value=_secret("SEC_USER_AGENT") or "",
                                help="SEC asks every client to identify itself. Enables Stocks > Quality.") or None
     if sb.button("Refresh data"):
@@ -29700,10 +29727,14 @@ def render_aw(cfg, ab: Optional[Dict[str, Any]]) -> None:
                                "vw_pos_ev": P_("vs gap's line %", format="%+.1f"), "vw_age_ev": P_("gap, sessions ago", format="%.0f"),
                                "vw_pinch_w": P_("high-low lines apart, ATR", format="%.1f")})
         st.download_button("Download table (CSV)", T.to_csv(index=False), "anchored_vwap.csv", "text/csv", key="aw_dl")
-    sec("Does it matter for your setups?")
     res = ss.get("lg_res")
     run = (res or {}).get("runs", {}).get("list") if res else None
-    if run is None or run.get("ev") is None or not len(run["ev"]):
+    in_cloud = lab_cloud()                 # the hosted dashboard builds no ledger, so there is nothing to read
+    if not in_cloud:
+        sec("Does it matter for your setups?")
+    if in_cloud:
+        pass
+    elif run is None or run.get("ev") is None or not len(run["ev"]):
         note("Build the Setup ledger (Stocks > Setup ledger) with the VWAP family on, and this reads its setups, then "
              "every family's trades by the AVWAP state on the signal day.")
     else:
@@ -42725,12 +42756,12 @@ def main() -> None:
         M = st.tabs(["Climate", "Narratives", "Narrative charts", "Intermarket", "Mandelbrot", "Price action", "Breadth",
                      "Vol & sentiment", "CMT", "Macro"])
     with top[4]:
-        S = st.tabs(["Screener", "RS 8-week", "VWAP", "Leveraged", "RS leaders", "Group leaders", "IPO leaders", "Alphas", "Alphas by trade", "Calibration",
+        S = lab_tabs(["Screener", "RS 8-week", "VWAP", "Leveraged", "RS leaders", "Group leaders", "IPO leaders", "Alphas", "Alphas by trade", "Calibration",
                      "Setup ledger", "Expectancy & Kelly", "Simulation", "Trade ranker", "Breakout model (ORB)",
                      "30-min pivots", "Process plinko", "Scorecard", "Learned ranker", "Name stack", "Filings & flows", "Quality",
                      "Kelly: stock trades"])
     with top[5]:
-        O = st.tabs(["Vol desk", "VRP desk (American)", "Bull spreads", "Bear spreads", "Market odds", "Strategy lab",
+        O = lab_tabs(["Vol desk", "VRP desk (American)", "Bull spreads", "Bear spreads", "Market odds", "Strategy lab",
                      "Dealer positioning", "Debit screen", "Strike / hit", "Flow tape", "Kelly: spreads"])
     stamp = (date.today().isoformat(), session_phase())
     base = (stamp, cfg["source"], cfg["drop_partial"], bool(cfg["key"]))
@@ -42862,130 +42893,164 @@ def main() -> None:
     if ab is not None:
         fm = memo(("factors",) + ufp, lambda: factor_metrics(ab["P"], closes))
         vc = memo(("volchar",) + ufp, lambda: volume_character(ab["P"]))
-    with S[0]:
-        render_screener(cfg, uni, ab, bars, bench_bars, stack, hits, fm, vc, clim)
-    with S[1]:
-        render_rs8(cfg, bars, bench_bars)
-    with S[2]:
-        try:
-            render_aw(cfg, ab)
-        except Exception as e:
-            warnbox(f"VWAP: {type(e).__name__}: {e}")
-    with S[3]:
-        try:
-            render_lev(cfg, ab, bars, bench_bars)
-        except Exception as e:
-            warnbox(f"Leveraged: {type(e).__name__}: {e}")
-    with S[4]:
-        try:
-            render_rs_leaders(cfg, uni, ab, bench_bars)
-        except Exception as e:
-            warnbox(f"RS leaders: {type(e).__name__}: {e}")
-    with S[5]:
-        try:
-            (st.fragment(render_group_leaders) if hasattr(st, "fragment") else render_group_leaders)(cfg, ab)
-        except Exception as e:
-            warnbox(f"Group leaders: {type(e).__name__}: {e}")
-    with S[6]:
-        try:
-            render_ipos(cfg, uni, ab, bars, bench_bars)
-        except Exception as e:
-            warnbox(f"IPO leaders: {type(e).__name__}: {e}")
-    with S[7]:                                         # a fragment: the page's own controls rerun only this page
-        (st.fragment(render_alphas) if hasattr(st, "fragment") else render_alphas)(ab, cfg, ginfo, src_counts, cfg["refuse"])
-    with S[8]:                                         # a fragment: its button reruns only this page
-        try:
-            (st.fragment(render_am) if hasattr(st, "fragment") else render_am)(cfg, ab, bars)
-        except Exception as e:
-            warnbox(f"Alphas by trade: {type(e).__name__}: {e}")
-    with S[9]:
-        render_calibration(ab)
-        if ab is not None:
-            render_systests(ab, int(st.session_state.get("cal_h", 5)), int(st.session_state.get("cal_w", 260)))
-    with S[10]:
-        try:
-            render_ledger(cfg, ab, bench_bars, ctx, bars)
-        except Exception as e:
-            warnbox(f"Setup ledger: {type(e).__name__}: {e}")
-    with S[11]:
-        try:
-            render_expectancy(cfg, ab, bench_bars, ctx, bars)
-        except Exception as e:
-            warnbox(f"Expectancy & Kelly: {type(e).__name__}: {e}")
-    with S[12]:                                         # a fragment: its controls rerun only this page
-        (st.fragment(render_simulation_safe) if hasattr(st, "fragment") else render_simulation_safe)(cfg, ab, bench_bars, ctx, bars)
-    with S[13]:
-        try:
-            render_ranker(cfg, ab, bench_bars, ctx, bars, uni)
-        except Exception as e:
-            warnbox(f"Trade ranker: {type(e).__name__}: {e}")
-    with S[14]:                                        # fragments: their buttons rerun only the page
-        try:
-            (st.fragment(render_orb) if hasattr(st, "fragment") else render_orb)(cfg, uni, ab, bars, bench_bars)
-        except Exception as e:
-            warnbox(f"Breakout model: {type(e).__name__}: {e}")
-    with S[15]:                                        # a fragment: its buttons rerun only the page
-        try:
-            (st.fragment(render_pv) if hasattr(st, "fragment") else render_pv)(cfg, ab, bars)
-        except Exception as e:
-            warnbox(f"30-min pivots: {type(e).__name__}: {e}")
-    with S[16]:                                        # a fragment: its buttons rerun only the page
-        try:
-            (st.fragment(render_pk) if hasattr(st, "fragment") else render_pk)(cfg, ab, bars)
-        except Exception as e:
-            warnbox(f"Process plinko: {type(e).__name__}: {e}")
-    with S[17]:                                        # a fragment: its buttons rerun only the page
-        try:
-            (st.fragment(render_tc) if hasattr(st, "fragment") else render_tc)(cfg, ab, bars)
-        except Exception as e:
-            warnbox(f"Scorecard: {type(e).__name__}: {e}")
-    with S[18]:
-        try:
-            (st.fragment(render_ar) if hasattr(st, "fragment") else render_ar)(cfg, ab, bars, uni)
-        except Exception as e:
-            warnbox(f"Learned ranker: {type(e).__name__}: {e}")
-    with S[19]:
-        render_stack(stack, frames, bars)
-    with S[20]:
-        render_flows(cfg, uni, ab, bars)
-    with S[21]:
-        render_quality(cfg, uni)
-    with S[22]:
-        render_kelly_stocks(cfg, ab, bars, bench_bars, frames, clim, mand, hvs)
-    with O[0]:
-        render_voldesk(cfg, ab, bars, bench_bars, hvs)
-    with O[1]:
-        try:
-            render_vrp_desk(cfg, ab, bars, bench_bars)
-        except Exception as e:
-            warnbox(f"VRP desk: {type(e).__name__}: {e}")
-    with O[2]:
-        try:
-            render_bull(cfg, ab, bars, bench_bars, clim)
-        except Exception as e:
-            warnbox(f"Bull spreads: {type(e).__name__}: {e}")
-    with O[3]:
-        try:
-            render_bear(cfg, ab, bars, bench_bars, clim)
-        except Exception as e:
-            warnbox(f"Bear spreads: {type(e).__name__}: {e}")
-    with O[4]:
-        try:
-            render_odds(cfg, ab, bars, bench_bars)
-        except Exception as e:
-            warnbox(f"Market odds: {type(e).__name__}: {e}")
-    with O[5]:
-        render_strategy(cfg, ab, bars, bench_bars)
-    with O[6]:
-        render_dealer(cfg, bars, bench_bars, hvs)
-    with O[7]:
-        render_debits(cfg, ab, spots, hvs)
-    with O[8]:
-        render_hits(hits, stack)
-    with O[9]:
-        render_flow(cfg, ab, spots, hvs, dvol)
-    with O[10]:
-        render_kelly_options(cfg, ab, bars, bench_bars, frames, clim, mand, hvs)
+    if "Screener" in S:
+        with S["Screener"]:
+            render_screener(cfg, uni, ab, bars, bench_bars, stack, hits, fm, vc, clim)
+    if "RS 8-week" in S:
+        with S["RS 8-week"]:
+            render_rs8(cfg, bars, bench_bars)
+    if "VWAP" in S:
+        with S["VWAP"]:
+            try:
+                render_aw(cfg, ab)
+            except Exception as e:
+                warnbox(f"VWAP: {type(e).__name__}: {e}")
+    if "Leveraged" in S:
+        with S["Leveraged"]:
+            try:
+                render_lev(cfg, ab, bars, bench_bars)
+            except Exception as e:
+                warnbox(f"Leveraged: {type(e).__name__}: {e}")
+    if "RS leaders" in S:
+        with S["RS leaders"]:
+            try:
+                render_rs_leaders(cfg, uni, ab, bench_bars)
+            except Exception as e:
+                warnbox(f"RS leaders: {type(e).__name__}: {e}")
+    if "Group leaders" in S:
+        with S["Group leaders"]:
+            try:
+                (st.fragment(render_group_leaders) if hasattr(st, "fragment") else render_group_leaders)(cfg, ab)
+            except Exception as e:
+                warnbox(f"Group leaders: {type(e).__name__}: {e}")
+    if "IPO leaders" in S:
+        with S["IPO leaders"]:
+            try:
+                render_ipos(cfg, uni, ab, bars, bench_bars)
+            except Exception as e:
+                warnbox(f"IPO leaders: {type(e).__name__}: {e}")
+    if "Alphas" in S:
+        with S["Alphas"]:                                         # a fragment: the page's own controls rerun only this page
+            (st.fragment(render_alphas) if hasattr(st, "fragment") else render_alphas)(ab, cfg, ginfo, src_counts, cfg["refuse"])
+    if "Alphas by trade" in S:
+        with S["Alphas by trade"]:                                         # a fragment: its button reruns only this page
+            try:
+                (st.fragment(render_am) if hasattr(st, "fragment") else render_am)(cfg, ab, bars)
+            except Exception as e:
+                warnbox(f"Alphas by trade: {type(e).__name__}: {e}")
+    if "Calibration" in S:
+        with S["Calibration"]:
+            render_calibration(ab)
+            if ab is not None:
+                render_systests(ab, int(st.session_state.get("cal_h", 5)), int(st.session_state.get("cal_w", 260)))
+    if "Setup ledger" in S:
+        with S["Setup ledger"]:
+            try:
+                render_ledger(cfg, ab, bench_bars, ctx, bars)
+            except Exception as e:
+                warnbox(f"Setup ledger: {type(e).__name__}: {e}")
+    if "Expectancy & Kelly" in S:
+        with S["Expectancy & Kelly"]:
+            try:
+                render_expectancy(cfg, ab, bench_bars, ctx, bars)
+            except Exception as e:
+                warnbox(f"Expectancy & Kelly: {type(e).__name__}: {e}")
+    if "Simulation" in S:
+        with S["Simulation"]:                                         # a fragment: its controls rerun only this page
+            (st.fragment(render_simulation_safe) if hasattr(st, "fragment") else render_simulation_safe)(cfg, ab, bench_bars, ctx, bars)
+    if "Trade ranker" in S:
+        with S["Trade ranker"]:
+            try:
+                render_ranker(cfg, ab, bench_bars, ctx, bars, uni)
+            except Exception as e:
+                warnbox(f"Trade ranker: {type(e).__name__}: {e}")
+    if "Breakout model (ORB)" in S:
+        with S["Breakout model (ORB)"]:                                        # fragments: their buttons rerun only the page
+            try:
+                (st.fragment(render_orb) if hasattr(st, "fragment") else render_orb)(cfg, uni, ab, bars, bench_bars)
+            except Exception as e:
+                warnbox(f"Breakout model: {type(e).__name__}: {e}")
+    if "30-min pivots" in S:
+        with S["30-min pivots"]:                                        # a fragment: its buttons rerun only the page
+            try:
+                (st.fragment(render_pv) if hasattr(st, "fragment") else render_pv)(cfg, ab, bars)
+            except Exception as e:
+                warnbox(f"30-min pivots: {type(e).__name__}: {e}")
+    if "Process plinko" in S:
+        with S["Process plinko"]:                                        # a fragment: its buttons rerun only the page
+            try:
+                (st.fragment(render_pk) if hasattr(st, "fragment") else render_pk)(cfg, ab, bars)
+            except Exception as e:
+                warnbox(f"Process plinko: {type(e).__name__}: {e}")
+    if "Scorecard" in S:
+        with S["Scorecard"]:                                        # a fragment: its buttons rerun only the page
+            try:
+                (st.fragment(render_tc) if hasattr(st, "fragment") else render_tc)(cfg, ab, bars)
+            except Exception as e:
+                warnbox(f"Scorecard: {type(e).__name__}: {e}")
+    if "Learned ranker" in S:
+        with S["Learned ranker"]:
+            try:
+                (st.fragment(render_ar) if hasattr(st, "fragment") else render_ar)(cfg, ab, bars, uni)
+            except Exception as e:
+                warnbox(f"Learned ranker: {type(e).__name__}: {e}")
+    if "Name stack" in S:
+        with S["Name stack"]:
+            render_stack(stack, frames, bars)
+    if "Filings & flows" in S:
+        with S["Filings & flows"]:
+            render_flows(cfg, uni, ab, bars)
+    if "Quality" in S:
+        with S["Quality"]:
+            render_quality(cfg, uni)
+    if "Kelly: stock trades" in S:
+        with S["Kelly: stock trades"]:
+            render_kelly_stocks(cfg, ab, bars, bench_bars, frames, clim, mand, hvs)
+    if "Vol desk" in O:
+        with O["Vol desk"]:
+            render_voldesk(cfg, ab, bars, bench_bars, hvs)
+    if "VRP desk (American)" in O:
+        with O["VRP desk (American)"]:
+            try:
+                render_vrp_desk(cfg, ab, bars, bench_bars)
+            except Exception as e:
+                warnbox(f"VRP desk: {type(e).__name__}: {e}")
+    if "Bull spreads" in O:
+        with O["Bull spreads"]:
+            try:
+                render_bull(cfg, ab, bars, bench_bars, clim)
+            except Exception as e:
+                warnbox(f"Bull spreads: {type(e).__name__}: {e}")
+    if "Bear spreads" in O:
+        with O["Bear spreads"]:
+            try:
+                render_bear(cfg, ab, bars, bench_bars, clim)
+            except Exception as e:
+                warnbox(f"Bear spreads: {type(e).__name__}: {e}")
+    if "Market odds" in O:
+        with O["Market odds"]:
+            try:
+                render_odds(cfg, ab, bars, bench_bars)
+            except Exception as e:
+                warnbox(f"Market odds: {type(e).__name__}: {e}")
+    if "Strategy lab" in O:
+        with O["Strategy lab"]:
+            render_strategy(cfg, ab, bars, bench_bars)
+    if "Dealer positioning" in O:
+        with O["Dealer positioning"]:
+            render_dealer(cfg, bars, bench_bars, hvs)
+    if "Debit screen" in O:
+        with O["Debit screen"]:
+            render_debits(cfg, ab, spots, hvs)
+    if "Strike / hit" in O:
+        with O["Strike / hit"]:
+            render_hits(hits, stack)
+    if "Flow tape" in O:
+        with O["Flow tape"]:
+            render_flow(cfg, ab, spots, hvs, dvol)
+    if "Kelly: spreads" in O:
+        with O["Kelly: spreads"]:
+            render_kelly_options(cfg, ab, bars, bench_bars, frames, clim, mand, hvs)
     with top[6]:
         try:
             render_grader(cfg, uni, bars, bench_bars, hvs, clim)

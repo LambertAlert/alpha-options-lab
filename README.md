@@ -36,6 +36,34 @@ The app writes everything it saves under `data/` (ledgers, caches, your trade lo
 Environment variables can relocate them: `LAB_TRADE_LOG`, `LAB_PV_CACHE`, `LAB_OPT_BARS`, `LAB_HESTON_FILE`,
 `WARROOM_DATA`.
 
+## Hosted dashboard (Streamlit Community Cloud)
+
+1. On share.streamlit.io, choose **Create app**, then this repo, branch `main`, main file `alpha_options_lab.py`.
+   Under Advanced settings, pick Python 3.13.
+2. In the app's **Settings > Secrets**, paste:
+
+   ```toml
+   MASSIVE_API_KEY = "your key"
+   FRED_API_KEY = "your key"        # optional: Market > Macro
+   LAB_CLOUD = "1"                  # the hosted layout (below)
+   ```
+
+3. Under **Settings > Sharing**, choose "Only specific people can view this app" and invite your own email. The repo
+   is public, so the app starts public, and your key pays for anything a visitor runs. Community Cloud allows one
+   private app at a time.
+
+How the hosted app differs:
+- It installs `requirements.txt`, which leaves out torch and lightgbm. The Breakout model and Learned ranker fall
+  back to scikit-learn.
+- `LAB_CLOUD = "1"` leaves out the tabs that build or need the ledgers, and the trade log:
+  - Stocks: Setup ledger, Expectancy & Kelly, Simulation, Trade ranker, Process plinko, Scorecard, Alphas by trade.
+  - Options: Bull and Bear spreads.
+
+  The disk is wiped on every restart, and building ledgers takes minutes and a lot of memory.
+- Keys stored in Secrets are never put into a sidebar box. A box's value is sent to the browser; the box is only
+  there to override the stored key.
+- The app sleeps after 12 hours without a visit; the next visit wakes it.
+
 ## What's in it
 
 - **Command / Brief:** the morning read.
