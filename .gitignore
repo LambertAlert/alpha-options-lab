@@ -1,0 +1,16 @@
+# local data, caches and saved ledgers (written by the app at run time)
+data/
+*.parquet
+__pycache__/
+.ruff_cache/
+.pytest_cache/
+*.tmp
+
+# secrets: API keys go in .streamlit/secrets.toml or environment variables, never in git
+.streamlit/secrets.toml
+secrets.toml
+.env
+
+# your own lists (the app reads them from this folder when present)
+watchlist_input.csv
+Tickers.csv

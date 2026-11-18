@@ -1,0 +1,15 @@
+# alpha_options_lab.py and playbook.py: the versions every test was run on (Nov 9 2026, Python 3.13).
+# Install with:  pip install -r requirements-lab.txt
+pandas==3.0.5
+numpy==2.5.3
+streamlit==1.66.1
+altair==6.3.0
+requests==2.34.2
+scipy==1.18.1
+scikit-learn==1.9.1
+pyarrow==26.0.0
+tzdata                # Windows has no built-in time zone database; the lab's Eastern-time clock needs this
+# Optional: the tabs that use them say so when they are missing
+torch==2.15.0         # Stocks > Breakout model (ORB), Learned ranker
+lightgbm==4.7.0       # optional booster for the breakout model
+openpyxl==3.1.5       # Excel export

@@ -1,0 +1,436 @@
+Symbol,Theme,ThemeRank,Industry
+AAMI,Fintech,3,Finance - Misc Services
+AAOI,Semiconductors,1,Electronics - Semiconductors
+AAON,Home Construction,5,Building Prdcts - Air Heating
+ACHC,Healthcare Innovation,6,Medical - Hospitals
+ACLS,Semiconductors,1,Electrical - Manufacturing
+AD,Communications Components,3,Wireless National
+ADEA,AI & Future Tech,1,Technology Services
+ADTN,Communications Components,3,Communications Components
+ADV,Consumer Discretionary,6,Consumer Prdts - Misc Discr
+AEHR,Semiconductors,1,Electronics - Measuring Inst
+AESI,Oil & Gas / Upstream,7,Oil - US Integrated
+AGL,Healthcare Innovation,5,Medical Services
+AGX,Home Construction,5,Building & Construction - Misc
+AIN,Unclassified,99,Textile - Products
+AIP,AI & Future Tech,1,Internet - Software
+AKAM,AI & Future Tech,1,Internet - Services
+ALGM,Semiconductors,1,Electronics - Semiconductors
+ALOT,AI & Future Tech,1,Technology Services
+AMAT,Semiconductors,1,Electronics - Semiconductors
+AMBA,Semiconductors,1,Electronics - Semiconductors
+AMBQ,Semiconductors,1,Electronics - Semiconductors
+AMD,Data Centers / Digital Infra,3,Computer - Integrated Systems
+AMKR,Semiconductors,1,Electronics - Semiconductors
+AMN,Expanded Tech / Software,4,Business Services
+AMSC,Semiconductors,1,Electronics - Misc Components
+ANAB,Biotechnology,5,Medical - Biomedical
+AP,Rare Earth / Strategic Metals,3,Metal Production & Fabrication
+ARES,Fintech,3,Finance - Investment Mgmt
+ARM,Semiconductors,1,Electronics - Semiconductors
+ARW,Semiconductors,1,Electronics - Parts Distrib
+ARWR,Biotechnology,5,Medical - Biomedical
+ASC,EV & Self-Driving Tech,4,Transportation - Ship
+ASML,Semiconductors,1,Semi-Eqpt Wafer Fabrication
+ASND,Biotechnology,5,Medical - Biomedical
+ASTH,Healthcare Innovation,5,Medical - Outpatient & Hm Care
+ASX,Semiconductors,1,Electronics - Semiconductors
+ASYS,Semiconductors,1,Semi General
+ATEN,AI & Future Tech,1,Internet - Software
+ATEX,Data Centers / Digital Infra,3,Communications Infrastructure
+ATKR,Materials,6,Wire & Cable Products
+ATLC,Fintech,3,Finance - Misc Services
+ATS,Robotics & Automation,3,Machinery - General Industrial
+AVGO,Semiconductors,1,Electronics - Semiconductors
+AVT,Semiconductors,1,Electronics - Parts Distrib
+AXTI,Semiconductors,1,Electronics - Semiconductors
+AZZ,Robotics & Automation,3,Machinery - Electrical
+BABA,AI & Future Tech,1,Internet Commerce
+BAND,Data Centers / Digital Infra,3,Communications Infrastructure
+BE,Clean Energy / Power,4,Other Alt Energy
+BEAM,Biotechnology,5,Medical - Biomedical
+BEKE,AI & Future Tech,1,Internet - Services
+BELFA,Semiconductors,1,Electronics Products - Misc
+BELFB,Semiconductors,1,Electronics Products - Misc
+BFH,Fintech,3,Finance - Misc Services
+BIDU,AI & Future Tech,1,Internet - Services
+BILL,AI & Future Tech,1,Internet - Software
+BKSY,AI & Future Tech,1,Technology Services
+BLLN,Biotechnology,5,Medical Products
+BRKR,Unclassified,99,Industrial Scientific
+BTSG,Healthcare Innovation,5,Medical Services
+BW,Clean Energy / Power,5,Electrical Power
+BWA,EV & Self-Driving Tech,4,Auto - Truck Original Parts
+BWAY,Biotechnology,5,Medical Products
+BWMN,Expanded Tech / Software,4,Business Services
+CACC,Financials,6,Finance - Consumer Loans
+CALY,Gaming / Esports,5,Leisure & Recreational Prdcts
+CBRL,Consumer Discretionary,6,Retail - Restaurants
+CBT,Rare Earth / Strategic Metals,3,Chemical - Diversified
+CCSI,AI & Future Tech,1,Internet - Software
+CDNL,Defense & Aerospace,2,Engineering & R&D Services
+CEVA,AI & Future Tech,1,Internet - Software
+CGNX,Semiconductors,1,Electronic Test Equipment
+CHEF,Consumer Discretionary,6,Food - Misc & Diversified
+CHMG,Financials,6,Banks - Southeast
+CIEN,Communications Components,3,Communications Components
+CIFR,AI & Future Tech,1,Technology Services
+CLFD,Communications Components,3,Wireless Equipment
+CLPT,Biotechnology,5,Medical Instruments
+CLYM,Biotechnology,5,Medical - Biomedical
+CMP,Rare Earth / Strategic Metals,3,Chemical - Diversified
+CMPS,Biotechnology,5,Medical Services
+CNNE,Fintech,3,Finance - Investment Mgmt
+COCO,Unclassified,99,Beverages - Soft
+COHR,AI & Future Tech,1,Technology Services
+CON,Healthcare Innovation,6,Medical Services
+CORT,Biotechnology,5,Medical - Drugs
+CORZ,Fintech,3,Finance - Misc Services
+CRCL,Fintech,3,Finance - Misc Services
+CRDO,Semiconductors,1,Electronics - Semiconductors
+CRWD,Cybersecurity,2,Security
+CSCO,Data Centers / Digital Infra,3,Computer - Networks
+CSIQ,Solar Energy,4,Solar
+CSTM,Rare Earth / Strategic Metals,3,Metal Products - Distribution
+CTGO,Rare Earth / Strategic Metals,3,Mining - Misc
+CTS,Semiconductors,1,Electronics - Misc Components
+CVLG,Industrials,6,Transportation - Truck
+CVLT,AI & Future Tech,1,Computer - Software
+CVSA,Expanded Tech / Software,4,Schools
+CYD,EV & Self-Driving Tech,4,Auto - Truck Original Parts
+CYRX,Healthcare Innovation,5,Medical Services
+CYTK,Biotechnology,5,Medical - Biomedical
+CZR,Gaming / Esports,5,Leisure & Recreation Services
+DAO,AI & Future Tech,1,Technology Services
+DAVE,AI & Future Tech,1,Technology Services
+DBX,AI & Future Tech,1,Internet - Services
+DCTH,Biotechnology,5,Medical Instruments
+DDOG,AI & Future Tech,1,Internet - Software
+DELL,Data Centers / Digital Infra,3,Computer - Micro
+DIN,Consumer Discretionary,6,Retail - Restaurants
+DINO,Oil & Gas / Upstream,7,Oil - Refining and Marketing
+DIOD,Semiconductors,1,Electronics - Semiconductors
+DKNG,Gaming / Esports,5,Gaming
+DKS,Consumer Discretionary,6,Retail - Misc & Diversified
+DOCN,AI & Future Tech,1,Internet - Software
+DRTS,Healthcare Innovation,6,Medical Instruments
+DVA,Healthcare Innovation,5,Medical - Outpatient & Hm Care
+ECVT,Rare Earth / Strategic Metals,3,Chemical - Specialty
+EFXT,Clean Energy / Power,4,Other Alt Energy
+ELA,Unclassified,99,Retail - Jewelry
+ENLT,Clean Energy / Power,4,Other Alt Energy
+ENOV,Healthcare Innovation,5,Medical Information Systems
+ESP,Unclassified,99,Electronics - Military
+ETOR,Financials,6,Insurance - Brokers
+EVER,AI & Future Tech,1,Internet - Software
+EXTR,Data Centers / Digital Infra,3,Computer - Networks
+EZPW,Financials,6,Finance - Consumer Loans
+FA,AI & Future Tech,1,Internet - Software
+FCEL,Clean Energy / Power,4,Other Alt Energy
+FEIM,Semiconductors,1,Industrial Controls
+FIVN,AI & Future Tech,1,Internet - Software
+FIX,Home Construction,5,Building Prdcts - Air Heating
+FLEX,Semiconductors,1,Electronics Products - Misc
+FLNC,Clean Energy / Power,4,Other Alt Energy
+FLOC,Oil & Gas / Upstream,7,Oil - International Integrated
+FLY,Defense & Aerospace,2,Aerospace - Defense
+FORM,Semiconductors,1,Electronics - Semiconductors
+FROG,AI & Future Tech,1,Internet - Software
+FSTR,Rare Earth / Strategic Metals,3,Steel - Producers
+FTDR,Home Construction,5,Building & Construction - Misc
+FTNT,Cybersecurity,2,Security
+FUN,Gaming / Esports,5,Leisure & Recreation Services
+FWONK,Expanded Tech / Software,4,Media Conglomerates
+GCO,Unclassified,99,Retail - Apparel & Shoes
+GDEV,Gaming / Esports,5,Gaming
+GEN,AI & Future Tech,1,Technology Services
+GFS,Semiconductors,1,Electronics - Semiconductors
+GHM,Robotics & Automation,3,Machinery - General Industrial
+GKOS,Biotechnology,5,Medical Instruments
+GLW,Communications Components,3,Communications Components
+GNRC,Robotics & Automation,3,Machinery - General Industrial
+GPRE,Rare Earth / Strategic Metals,3,Chemical - Specialty
+GRAL,Biotechnology,5,Medical - Biomedical
+GRND,AI & Future Tech,1,Internet - Software
+GRPN,AI & Future Tech,1,Internet Commerce
+GRRR,AI & Future Tech,1,Technology Services
+GTX,EV & Self-Driving Tech,4,Auto - Truck Original Parts
+HCSG,Expanded Tech / Software,4,Business Services
+HELE,Unclassified,99,Cosmetics & Toiletries
+HIMS,Healthcare Innovation,5,Medical Information Systems
+HIMX,Semiconductors,1,Electronics - Semiconductors
+HLIT,Communications Components,3,Communications Components
+HNGE,Healthcare Innovation,5,Medical Information Systems
+HOG,Unclassified,99,Auto - Domestic
+HPE,Data Centers / Digital Infra,3,Computer - Integrated Systems
+HPP,Consumer Discretionary,6,REIT - Equity Trust Other
+HRB,Consumer Discretionary,6,Consumer Services - Misc
+HSHP,EV & Self-Driving Tech,4,Transportation - Ship
+HSTM,AI & Future Tech,1,Internet - Services
+HTLD,Industrials,6,Transportation - Truck
+HUN,Rare Earth / Strategic Metals,3,Chemical - Diversified
+HUT,Fintech,3,Finance - Misc Services
+HWKN,Rare Earth / Strategic Metals,3,Chemical - Specialty
+HZO,Consumer Discretionary,6,Retail - Misc & Diversified
+IART,Biotechnology,5,Medical Instruments
+ICHR,Semiconductors,1,Electronics - Semiconductors
+IMOS,Semiconductors,1,Semi-Eqpt Material Services
+IMUX,Biotechnology,5,Medical - Biomedical
+IMVT,Biotechnology,5,Medical - Biomedical
+INOD,Defense & Aerospace,2,Engineering & R&D Services
+INSW,EV & Self-Driving Tech,4,Transportation - Ship
+INTC,Semiconductors,1,Semi General
+IPX,Rare Earth / Strategic Metals,3,Mining - Misc
+IRDM,Space Tech,3,Satellite Communication
+IREN,Fintech,3,Finance - Misc Services
+ITRN,Unclassified,99,Protection - Safety
+IVZ,Fintech,3,Finance - Investment Mgmt
+JBIO,Biotechnology,5,Medical - Biomedical
+JEF,Fintech,3,Finance - Misc Services
+JOBY,Defense & Aerospace,2,Aerospace - Defense
+KEYS,Semiconductors,1,Electronics - Measuring Inst
+KFRC,Expanded Tech / Software,4,Staffing
+KLAC,Semiconductors,1,Electronics Products - Misc
+KLIC,Semiconductors,1,Electrical - Manufacturing
+KN,Communications Components,3,Communications Components
+KNSA,Biotechnology,5,Medical - Biomedical
+KOP,Rare Earth / Strategic Metals,3,Chemical - Diversified
+KYIV,Unclassified,99,Wireline Non-US
+KZIA,Biotechnology,5,Medical - Biomedical
+LASR,Semiconductors,1,Electronics - Semiconductors
+LB,Oil & Gas / Upstream,5,Oil - US Integrated
+LBRT,Oil & Gas / Upstream,7,Oil - Field Services
+LC,Fintech,3,Finance - Misc Services
+LFUS,Semiconductors,1,Electronics - Misc Components
+LIFE,Financials,6,Insurance - Life
+LINC,Expanded Tech / Software,4,Schools
+LIND,Gaming / Esports,5,Leisure & Recreation Services
+LITE,Communications Components,3,Communications Components
+LNTH,Biotechnology,5,Medical Products
+LOGI,Data Centers / Digital Infra,3,Computers - Peripheral Equpt
+LONA,Biotechnology,5,Medical - Biomedical
+LPG,EV & Self-Driving Tech,4,Transportation - Ship
+LQDA,Biotechnology,5,Medical - Biomedical
+LSCC,Semiconductors,1,Electronics - Semiconductors
+LUNR,Defense & Aerospace,2,Aerospace - Defense
+LWLG,Rare Earth / Strategic Metals,3,Chemical - Plastics
+MANU,Gaming / Esports,5,Leisure & Recreation Services
+MARA,Fintech,3,Finance - Misc Services
+MBUU,Gaming / Esports,5,Leisure & Recreational Prdcts
+MBX,Biotechnology,5,Medical - Biomedical
+MCFT,Gaming / Esports,5,Leisure & Recreational Prdcts
+MDB,AI & Future Tech,1,Internet - Software
+MEC,Defense & Aerospace,2,Engineering & R&D Services
+MEI,AI & Future Tech,7,Electronics - Connectors
+MGNI,AI & Future Tech,1,Internet - Software
+MIAX,AI & Future Tech,1,Technology Services
+MIRM,Biotechnology,5,Medical - Biomedical
+MKSI,Semiconductors,1,Electronics Products - Misc
+MLAB,Biotechnology,5,Medical Instruments
+MNDY,AI & Future Tech,1,Internet - Software
+MNPR,Biotechnology,5,Medical - Biomedical
+MOD,EV & Self-Driving Tech,4,Auto - Truck Original Parts
+MOH,Healthcare Innovation,5,Medical - HMO
+MP,Rare Earth / Strategic Metals,3,Mining - Misc
+MPC,Oil & Gas / Upstream,7,Oil - Refining and Marketing
+MPTI,Defense & Aerospace,2,Engineering & R&D Services
+MPWR,Semiconductors,1,Semi Analog & Mixed
+MRAM,AI & Future Tech,1,Technology Services
+MRCY,Defense & Aerospace,2,Aerospace - Defense Equipment
+MRDN,Gaming / Esports,5,Gaming
+MRTN,Industrials,6,Transportation - Truck
+MRVL,Semiconductors,1,Electronics - Semiconductors
+MRX,Fintech,3,Finance - Misc Services
+MSTR,Fintech,3,Finance - Misc Services
+MTRN,Rare Earth / Strategic Metals,3,Mining - Misc
+MTSI,Semiconductors,1,Semi Analog & Mixed
+MTX,Rare Earth / Strategic Metals,3,Chemical - Specialty
+MU,Data Centers / Digital Infra,3,Computer - Integrated Systems
+MXL,Semiconductors,1,Semi Analog & Mixed
+NAMS,Biotechnology,5,Medical - Drugs
+NAVN,AI & Future Tech,1,Internet - Software
+NBTX,Biotechnology,5,Medical - Biomedical
+NDLS,Consumer Discretionary,6,Retail - Restaurants
+NGL,Oil & Gas / Upstream,7,Oil Refining & Marketing MLP
+NINE,Oil & Gas / Upstream,7,Oil - Field Services
+NN,AI & Future Tech,1,Technology Services
+NOK,Communications Components,3,Wireless Equipment
+NOVT,Semiconductors,1,Electronics - Misc Components
+NP,Financials,6,Insurance - Multi Line
+NPCE,Biotechnology,5,Medical Instruments
+NPO,AI & Future Tech,1,Technology Services
+NRC,AI & Future Tech,1,Business Information
+NSIT,Unclassified,99,Retail - Mail Order
+NSYS,Semiconductors,1,Electronics - Misc Components
+NTCT,Data Centers / Digital Infra,3,Computer - Networks
+NTGR,Communications Components,3,Communications Components
+NTNX,AI & Future Tech,1,IT Services
+NTSK,AI & Future Tech,1,Internet - Software
+NUTX,Healthcare Innovation,5,Medical Services
+NVCR,Biotechnology,5,Medical - Biomedical
+NVCT,Biotechnology,5,Medical - Biomedical
+NVDA,Semiconductors,1,Semi General
+NVEC,Semiconductors,1,Electronics - Semiconductors
+NVT,Semiconductors,1,Electronics - Misc Components
+NVTS,Semiconductors,1,Electronics - Semiconductors
+NWPX,Rare Earth / Strategic Metals,3,Steel - Specialty
+NXPI,Semiconductors,1,Semi Analog & Mixed
+NXT,Solar Energy,4,Solar
+OCC,Semiconductors,1,Fiber Optics
+OCS,Biotechnology,5,Medical - Biomedical
+OKTA,Cybersecurity,2,Security
+OMCL,Healthcare Innovation,5,Medical Information Systems
+OMDA,Healthcare Innovation,5,Medical Services
+ONEW,Gaming / Esports,5,Leisure & Recreational Prdcts
+OOMA,Communications Components,3,Communications Components
+OPLN,EV & Self-Driving Tech,4,Auto - Truck Original Parts
+OPRA,AI & Future Tech,1,Internet - Content
+ORKA,Biotechnology,5,Medical - Drugs
+ORN,Home Construction,5,Building - Heavy Construction
+OSCR,Financials,6,Insurance - Multi Line
+OSPN,AI & Future Tech,1,Internet - Software
+OSS,Data Centers / Digital Infra,3,Computer - Micro
+OUST,Semiconductors,1,Electronics - Misc Components
+OUT,Consumer Discretionary,6,REIT - Equity Trust Other
+P,AI & Future Tech,1,Technology Services
+PANW,Cybersecurity,2,Security
+PBI,Unclassified,99,Office Automation & Equipment
+PBT,Unclassified,99,Oil - US Royalty Trusts
+PCT,Clean Energy / Power,6,Waste Removal Svcs
+PCTY,AI & Future Tech,1,Internet - Software
+PDFS,AI & Future Tech,1,Computer - Services
+PENG,AI & Future Tech,1,Internet - Software
+PERI,AI & Future Tech,1,Internet - Content
+PGNY,Healthcare Innovation,5,Medical Services
+PGY,Fintech,3,Finance - Misc Services
+PHVS,Biotechnology,5,Medical - Biomedical
+PINS,AI & Future Tech,1,Internet - Software
+PKOH,Rare Earth / Strategic Metals,3,Metal Products - Fasteners
+PKX,Expanded Tech / Software,4,Conglomerates - Div Operations
+PL,Space Tech,3,Satellite Communication
+PLAB,Semiconductors,1,Semi-Eqpt PhotoMask
+PLRZ,Biotechnology,5,Medical - Biomedical
+PLXS,Semiconductors,1,Electronic Manufacturing
+POET,Semiconductors,1,Electronics - Semiconductors
+POWI,Semiconductors,1,Semi Power
+PRAX,Biotechnology,5,Medical - Biomedical
+PRCT,Biotechnology,5,Medical Instruments
+PRKS,Gaming / Esports,5,Leisure & Recreation Services
+PRMB,Unclassified,99,Beverages - Soft
+PSBD,Financials,6,Finance - SBIC & Commercial
+PSNY,Unclassified,99,Auto - Foreign
+PTRN,AI & Future Tech,1,Internet Commerce
+Q,Semiconductors,1,Electronics - Semiconductors
+QCOM,Semiconductors,1,Electronics - Semiconductors
+QRVO,Semiconductors,1,Semi Radio Frequency
+QUIK,Semiconductors,1,Electronics - Semiconductors
+QURE,Biotechnology,5,Medical - Biomedical
+RAMP,AI & Future Tech,1,Technology Services
+RBRK,AI & Future Tech,1,Internet - Software
+RDCM,Data Centers / Digital Infra,3,Computer - Networks
+RDDT,AI & Future Tech,1,Internet - Software
+RDVT,AI & Future Tech,1,Internet Software Services
+RDW,Defense & Aerospace,2,Aerospace - Defense
+RELL,Semiconductors,1,Electronics - Parts Distrib
+RELY,Fintech,3,Financial Transaction Services
+REX,Rare Earth / Strategic Metals,3,Chemical - Specialty
+RJET,Consumer Discretionary,6,Transportation - Airline
+RKLB,Defense & Aerospace,2,Aerospace - Defense Equipment
+RMR,Consumer Discretionary,6,Real Estate Operations
+RNG,AI & Future Tech,1,Internet Software Services
+ROKU,Expanded Tech / Software,4,Broadcast - Radio & TV
+ROOT,Financials,6,Insurance - Proprty & Casualty
+RUN,Solar Energy,4,Solar
+RVTY,Healthcare Innovation,5,Medical Services
+RXO,Industrials,6,Transportation - Services
+RYZ,Rare Earth / Strategic Metals,3,Metal Products - Distribution
+SAH,Consumer Discretionary,6,Retail - Wsale Auto & Trucks
+SANM,Semiconductors,1,Electronic Manufacturing
+SEI,Oil & Gas / Upstream,7,Oil Field Machinery & Equip
+SEZL,Fintech,3,Financial Transaction Services
+SGHC,Gaming / Esports,5,Gaming
+SHIP,EV & Self-Driving Tech,4,Transportation - Ship
+SHLS,Solar Energy,3,Solar
+SIF,Defense & Aerospace,2,Aerospace - Defense Equipment
+SIFY,AI & Future Tech,1,Internet - Services
+SILC,Data Centers / Digital Infra,3,Computer - Networks
+SIMO,Data Centers / Digital Infra,3,Computer - Integrated Systems
+SIRI,Expanded Tech / Software,4,Broadcast - Radio & TV
+SITM,Semiconductors,1,Electronics Products - Misc
+SKM,Communications Components,3,Wireless Non-US
+SKYT,Semiconductors,1,Electronics - Semiconductors
+SLG,Consumer Discretionary,6,REIT - Equity Trust Other
+SMCI,Data Centers / Digital Infra,3,Computer - Storage Devices
+SNDA,Healthcare Innovation,5,Medical Services
+SNDK,Data Centers / Digital Infra,3,Computer - Storage Devices
+SNEX,Fintech,3,Finance - Misc Services
+STFS,Unclassified,99,Advertising Marketing Services
+STM,Semiconductors,1,Semi General
+STNG,EV & Self-Driving Tech,4,Transportation - Ship
+STRL,Defense & Aerospace,2,Engineering & R&D Services
+STRO,Biotechnology,5,Medical - Biomedical
+STRZ,Expanded Tech / Software,4,Media Conglomerates
+STX,Data Centers / Digital Infra,3,Computer - Integrated Systems
+SVCO,Semiconductors,1,Electronics - Semiconductors
+SVM,Rare Earth / Strategic Metals,3,Mining - Misc
+SXT,Rare Earth / Strategic Metals,3,Chemical - Specialty
+SYNA,Semiconductors,1,Electronics - Semiconductors
+SYRE,Biotechnology,5,Medical - Biomedical
+TDC,Data Centers / Digital Infra,3,Computer - Storage Devices
+TDW,Oil & Gas / Upstream,5,Oil - US Integrated
+TEAM,AI & Future Tech,1,Internet - Software
+TECK,Rare Earth / Strategic Metals,3,Mining - Misc
+TENB,AI & Future Tech,1,Internet - Software
+TFX,Biotechnology,5,Medical Instruments
+TILE,Unclassified,99,Textile - Home Furnishings
+TITN,Consumer Discretionary,6,Retail - Wsale Auto & Trucks
+TNXP,Biotechnology,5,Medical - Drugs
+TPB,Unclassified,99,Tobacco
+TRMD,EV & Self-Driving Tech,4,Transportation - Ship
+TRS,Rare Earth / Strategic Metals,3,Metal Production & Fabrication
+TRVI,Biotechnology,5,Medical - Biomedical
+TSAT,Space Tech,3,Satellite Communication
+TSEM,Semiconductors,1,Electronics - Semiconductors
+TTMI,Semiconductors,1,Electronics - Misc Components
+TWIN,Robotics & Automation,3,Machinery - General Industrial
+TWLO,AI & Future Tech,1,Internet - Software
+TXN,Semiconductors,1,Semi General
+TXRH,Consumer Discretionary,6,Retail - Restaurants
+U,AI & Future Tech,1,Internet - Software
+UCTT,Semiconductors,1,Electrical - Manufacturing
+UFCS,Financials,6,Insurance - Proprty & Casualty
+UMC,Semiconductors,1,Electronics - Semiconductors
+UNFI,Consumer Discretionary,6,Food - Misc & Diversified
+URGN,Biotechnology,5,Medical - Biomedical
+URI,Home Construction,5,Building & Construction - Misc
+VBNK,Financials,6,Banks - Foreign
+VCYT,Biotechnology,5,Medical Instruments
+VERX,AI & Future Tech,1,Internet - Software
+VG,Oil & Gas / Upstream,5,Oil - US Exploration & Product
+VIAV,Communications Components,3,Communications Components
+VICR,Semiconductors,1,Electronics - Misc Components
+VIK,Gaming / Esports,5,Leisure & Recreation Services
+VPG,Semiconductors,1,Electronics - Misc Components
+VRT,AI & Future Tech,1,IT Services
+VSAT,Communications Components,3,Wireless Equipment
+VSH,Semiconductors,1,Semi Discretes
+WATT,Communications Components,3,Wireless Equipment
+WDC,Data Centers / Digital Infra,3,Computer - Storage Devices
+WERN,Industrials,6,Transportation - Truck
+WLDN,Expanded Tech / Software,4,Business Services
+WMG,Unclassified,99,Movie & TV Production & Dist
+WOLF,Robotics & Automation,3,Machinery - General Industrial
+WPP,Unclassified,99,Advertising Marketing Services
+WRBY,Unclassified,99,Consumer Prdts - Misc Staple
+WSC,Consumer Discretionary,6,Real Estate Operations
+WST,Healthcare Innovation,5,Medical - Dental Suppliers
+WT,Fintech,3,Finance - Misc Services
+WULF,Fintech,3,Finance - Misc Services
+WYFI,AI & Future Tech,1,Technology Services
+XIFR,Clean Energy / Power,4,Other Alt Energy
+XMTR,Robotics & Automation,3,Machinery - General Industrial
+XYZ,AI & Future Tech,1,Internet - Software
+YOU,AI & Future Tech,1,Internet - Software
+ZETA,Expanded Tech / Software,4,Technology Services
+ZGN,Unclassified,99,Retail - Apparel & Shoes
+ZVRA,Biotechnology,5,Medical - Drugs
